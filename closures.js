@@ -43,7 +43,14 @@ console.log(calling('453-215-9248'));
   Write a function called makeCounter that makes the following code work properly.
 */
 
-  //Code Here
+
+var makeCounter = function() {
+  var counter = 0;
+  return function countmake(){
+    return console.log(counter +=1);
+  }
+}
+
   var count = makeCounter();
   count() // 1
   count() // 2
@@ -57,25 +64,44 @@ console.log(calling('453-215-9248'));
 
 
 /*
-  Write a function that does something simple (console, alert, etc). Write a second function that accepts the first function as it's first parameter. The second function should return a new third function which, when invoked, invokes the first, original function that was passed in, but will only ever do so once.
+  Write a function that does something simple (console, alert, etc). Write a second function that accepts the first function as it's first parameter. 
+  The second function should return a new third function which, when invoked, invokes the first, original function that was passed in, but will only 
+  ever do so once.
 */
 
-  //Code Here
+function first(){
+  console.log('hi');
+}
+
+function second(x){
+  return function(){
+    first();
+  }()
+}
 
 
+second(first);
 
 //Next Problem
-
 
 
 /*
-  Now, similar to the last problem, write a function called 'fnCounter' that accepts two parameters. The first parameter will be an anonymous function and the second parameter, 'N', will be a number. Now, in 'fnCounter', allow the anonymous funciton to be invoked 'N' number of times. After it's been invoked 'N' number of times, return 'STOP'.
+  Now, similar to the last problem, write a function called 'fnCounter' that accepts two parameters. The first parameter will be an anonymous function
+  and the second parameter, 'N', will be a number. Now, in 'fnCounter', allow the anonymous funciton to be invoked 'N' number of times. After it's been 
+  invoked 'N' number of times, return 'STOP'.
 */
 
 
+function fnCounter (anon,N) {
+  for(i = 0; i < N; i++){
+    anon();
+  }
+}
+
+fnCounter(function(){console.log('here')}, 5);
+
 
 //Next Problem
-
 
 
 /*
@@ -85,24 +111,33 @@ console.log(calling('453-215-9248'));
           console.log( i );
       }, i*1000 );
     }
-  };
+  
+/*
+  Above you have a function named counter. Examine the function (without running the code) then below write what you expect to 
+  happen when the funciton is invoked. *Hint: setTimeout calls a function or evaluates an expression after a specified number of milliseconds.
 
-  Above you have a function named counter. Examine the function (without running the code) then below write what you expect to happen when the funciton is invoked. *Hint: setTimeout calls a function or evaluates an expression after a specified number of milliseconds.
-
-    //Answer Here
+    //Outputs 1,2,3,4,5
 
 
   Now, run the function in your console and note what happpens.
 
   Was your answer right or wrong?
 
-    //Answer Here
+    //wrong
 
 
   Fix the counter function so that it works the way you expect it to work. (logging 1 then 2 then 3, etc)
 */
 
-    //Code Here
+    var counter = function(){
+      for (var i=1; i<=5; i++) {
+        setTimeout(
+          console.log(i)
+          , i*1000 );
+      }
+    }
+
+    counter();
 
 
 
@@ -110,8 +145,15 @@ console.log(calling('453-215-9248'));
 
 
 
-/*
-  Make the following code work
+
+  var funcArray = [
+    zeroeth('0'),
+    first('1'),
+    second('2'),
+    third('3'),
+    fourth('4'),
+    fifth('5')
+  ]
 
   funcArray[0]() //0
   funcArray[1]() //1
@@ -120,7 +162,11 @@ console.log(calling('453-215-9248'));
   funcArray[4]() //4
   funcArray[5]() //5
 
-  *Hint: Don't let this fool you. Break down what's really happening here.
-*/
+
+
+
+
+  //Hint: Don't let this fool you. Break down what's really happening here.
+
 
 
